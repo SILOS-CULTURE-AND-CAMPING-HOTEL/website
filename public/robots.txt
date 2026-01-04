@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://siloshotel.com/sitemap.xml
+
+# Block common non-content paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /*.json$
+
+# Allow search engines to crawl the main site
+Crawl-delay: 1
