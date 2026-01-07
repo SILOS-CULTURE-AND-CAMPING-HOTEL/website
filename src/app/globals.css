@@ -167,9 +167,21 @@
   
   /* NavigationMenuContent styling */
   [data-slot="navigation-menu-content"] {
-    background-color: rgb(17, 24, 39, 0.95) !important;
-    border-color: rgb(55, 65, 81) !important;
-    color: white !important;
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+  
+  /* Rotating Background Animation */
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    2%, 98% { opacity: 1; }
+  }
+  
+  /* Sequential Background Animation */
+  @keyframes sequentialFade {
+    0%, 94% { opacity: 0; }
+    95%, 99% { opacity: 1; }
+    100% { opacity: 0; }
   }
   
   [data-slot="navigation-menu-link"] {

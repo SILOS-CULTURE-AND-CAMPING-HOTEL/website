@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu'
 import { MapPin, Phone, Mail, Users, Calendar, CreditCard, ChevronRight, CheckCircle } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Home() {
@@ -233,9 +234,11 @@ export default function Home() {
               >
                 <Card className="h-full bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15 transition-all duration-300 overflow-hidden">
                   <div className="w-full overflow-hidden bg-black/20">
-                    <img 
-                      src={service.image} 
+                    <Image
+                      src={service.image}
                       alt={service.title}
+                      width={800}
+                      height={256}
                       className="w-full object-contain hover:scale-110 transition-transform duration-300"
                     />
                   </div>
@@ -261,8 +264,50 @@ export default function Home() {
       </section>
 
       {/* Booking Info Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-purple-900/50 to-pink-900/50">
-        <div className="container mx-auto text-center">
+      <section className="py-20 px-6 bg-gradient-to-r from-purple-900/50 to-pink-900/50 relative overflow-hidden">
+        {/* Rotating Background Images */}
+        <div className="absolute inset-0 opacity-20">
+          {[
+            "/Images/IMG_0250.jpg",
+            "/Images/IMG_0348.jpg", 
+            "/Images/IMG_0342.jpg",
+            "/Images/IMG_0329.jpg",
+            "/Images/IMG_0330.jpg",
+            "/Images/IMG_0331.jpg",
+            "/Images/IMG_0333.jpg",
+            "/Images/IMG_0336.jpg",
+            "/Images/IMG_0326.jpg",
+            "/Images/IMG_0321.jpg",
+            "/Images/IMG_0319.jpg",
+            "/Images/IMG_0292.jpg",
+            "/Images/IMG_0297.jpg",
+            "/Images/IMG_0304.jpg",
+            "/Images/IMG_0310.jpg",
+            "/Images/IMG_0314.jpg",
+            "/Images/IMG_0316.jpg"
+          ].map((image, index) => (
+            <div
+              key={index}
+              className="absolute inset-0"
+              style={{
+                opacity: 0,
+                animation: `sequentialFade 68s linear infinite`,
+                animationDelay: `${index * 4}s`
+              }}
+            >
+              <Image
+                src={image}
+                alt={`Background ${index + 1}`}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority={index === 0}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="container mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
