@@ -51,18 +51,16 @@ export default function Home() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="#booking" legacyBehavior passHref>
-                    <NavigationMenuLink className="px-4 py-2 hover:text-purple-400 transition-colors">
+                  <NavigationMenuLink className="px-4 py-2 text-white hover:text-purple-400 transition-colors" asChild>
+                    <Link href="/booking">
                       Booking
-                    </NavigationMenuLink>
-                  </Link>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="#contact" legacyBehavior passHref>
-                    <NavigationMenuLink className="px-4 py-2 hover:text-purple-400 transition-colors">
-                      Contact
-                    </NavigationMenuLink>
-                  </Link>
+                  <NavigationMenuLink className="px-4 py-2 text-white hover:text-purple-400 transition-colors" href="#contact">
+                    Contact
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
@@ -80,6 +78,12 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundImage: 'url(/Images/DJI_0023.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
         <motion.div 
@@ -167,55 +171,55 @@ export default function Home() {
               {
                 title: "Luxury Cabins",
                 description: "Premium accommodation with modern amenities and stunning views",
-                icon: "🏡",
+                image: "/Images/IMG_0109.jpg",
                 features: ["AC & Heating", "Mini Kitchen", "Private Bathroom", "Balcony View"]
               },
               {
                 title: "Gourmet Restaurant",
                 description: "Exquisite dining experience with local and international cuisine",
-                icon: "🍽️",
+                image: "/Images/IMG_0169.jpg",
                 features: ["Fine Dining", "Local Cuisine", "Bar Service", "Room Service"]
               },
               {
                 title: "Adventure Ziplining",
                 description: "Thrilling zipline experience through the forest canopy",
-                icon: "🌲",
+                image: "/Images/IMG_0259.jpg",
                 features: ["6 Ziplines", "Safety Equipment", "Guided Tours", "Photo Package"]
               },
               {
                 title: "Canopy Bridge Walk",
                 description: "Scenic treetop walkway with breathtaking views",
-                icon: "🌉",
+                image: "/Images/IMG_0103.jpg",
                 features: ["300m Bridge", "Wildlife Viewing", "Sunset Tours", "Photography"]
               },
               {
                 title: "Swimming Pools",
                 description: "Relaxing pools for both adults and children",
-                icon: "🏊",
+                image: "/Images/IMG_0256.jpg",
                 features: ["Adult Pool", "Kids Pool", "Pool Bar", "Lounge Areas"]
               },
               {
                 title: "Kids Adventure Zone",
                 description: "Exciting activities for children of all ages",
-                icon: "🎈",
+                image: "/Images/IMG_0321.jpg",
                 features: ["Bouncing Castle", "Swings", "Camel Rides", "Quad Bikes"]
               },
               {
                 title: "Archery Range",
                 description: "Test your skills at our professional archery facility",
-                icon: "🏹",
+                image: "/Images/IMG_0103.jpg",
                 features: ["Professional Equipment", "Instruction", "Targets", "Competition"]
               },
               {
                 title: "Nature Trails",
                 description: "Guided hiking through pristine wilderness",
-                icon: "🥾",
+                image: "/Images/IMG_0080.jpg",
                 features: ["Marked Trails", "Wildlife Viewing", "Camping Sites", "Night Walks"]
               },
               {
                 title: "Animal Orphanage",
                 description: "Visit our sanctuary for rescued wildlife",
-                icon: "🐊",
+                image: "/Images/IMG_0071.jpg",
                 features: ["Crocodiles", "Peacocks", "Quails", "Educational Tours"]
               }
             ].map((service, index) => (
@@ -227,9 +231,15 @@ export default function Home() {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -5 }}
               >
-                <Card className="h-full bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15 transition-all duration-300">
+                <Card className="h-full bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15 transition-all duration-300 overflow-hidden">
+                  <div className="w-full overflow-hidden bg-black/20">
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="w-full object-contain hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
                   <CardHeader>
-                    <div className="text-4xl mb-4">{service.icon}</div>
                     <CardTitle className="text-xl text-white">{service.title}</CardTitle>
                     <CardDescription className="text-gray-300">{service.description}</CardDescription>
                   </CardHeader>
